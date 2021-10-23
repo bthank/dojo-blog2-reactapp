@@ -28,18 +28,26 @@ const Home = () => {
      );
 */
     const [blogs, setBlogs] = useState(null);
+    const [isPending, setIsPending] = useState(true);
+
+    //setTimeout(,1000);
 
     // useEffect fires on every render; note that a change of state triggers a render
     useEffect(() => {
         console.log('useEffect ran');
-        fetch('http://localhost:8000/blogs')
+
+        setTimeout(() => {
+            fetch('http://localhost:8000/blogs')
             .then(response => {   // this response is not the data; you need to do something to the object to get the data
                 return response.json();  // this json() function also takes some time to resolve, so you need another then() to wait for it to resolve
             })
             .then((data) => {  // at this point the data will be available
                 console.log(data);
                 setBlogs(data);
-            },[]);
+                setIsPending(false);
+            });
+
+        }, 1000);  // create a delay of 1000 to simulate a delay to see the 'Loading ...' message
 
     },[]); // 2nd arg is a dependency array that controls when useEffect runs
                // an empty array as 2nd arg stops useEffect from running after the initial render
@@ -55,6 +63,7 @@ const Home = () => {
             ))
             */
             }
+            {isPending && <div>Loading ...</div>}
             {blogs && <BlogList blogs={blogs} title="All Blogs" />}
         </div>
     );
