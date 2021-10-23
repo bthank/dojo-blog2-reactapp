@@ -7,6 +7,8 @@ const Create = () => {
     const [body, setBody] = useState('This is required'); 
     const [author, setAuthor] = useState('John'); // this is how to save value for a select list variable
 
+    const [isPending, setIsPending] = useState(false); // initially the page is not pending since the fetch post hasn't started yet
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const blog = {
@@ -15,6 +17,20 @@ const Create = () => {
             author
         };
         console.log(blog);
+
+        setIsPending(true); // set this flag to true when we start the fetch post
+
+        fetch('http://localhost:8000/blogs', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(blog)
+        })
+        .then(() => {
+            console.log("New blog added!");
+            setIsPending(false); // reset this flag back to false once the record is added to db
+        });
     };
 
     return ( 
@@ -48,10 +64,13 @@ const Create = () => {
                     <option value="John">John</option>
                     <option value="Michael">Michael</option>
                 </select>
-                <button>Add Blog</button>
-                <p>{title}</p>
-                <p>{body}</p>
-                <p>{author}</p>
+                {!isPending && <button>Add Blog</button>}
+                {isPending && <button disabled>Adding Blog ...</button>}
+                {/*  
+                    <p>{title}</p>
+                    <p>{body}</p>
+                    <p>{author}</p>
+                */}
             </form>
 
         </div>
