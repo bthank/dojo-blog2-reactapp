@@ -5,6 +5,7 @@ import Create from './Create';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BlogList from './BlogList';
 import BlogDetails from './BlogDetails';
+import NotFound from './NotFound';
 
 //function App() {   this can be converted to an arrow function as shown below
 const App = () => {
@@ -22,6 +23,8 @@ const App = () => {
             <Route path="/create"><Create /></Route>
             {/* use of a route parameter in a route  */}
             <Route path="/blogs/:id"><BlogDetails /></Route>
+            {/* The NotFound * route must be the last one in the Switch or it will match any route that comes in even if it is valid */}
+            <Route path="*"><NotFound /></Route>
           </Switch>
           
           
