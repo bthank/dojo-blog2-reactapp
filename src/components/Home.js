@@ -43,7 +43,7 @@ const Home = () => {
     useEffect(() => {
         console.log('useEffect ran');
         console.log(name);
-    },[name]); // 2nd arg is a dependency array
+    },[name]); // 2nd arg is a dependency array that controls when useEffect runs
                // an empty array as 2nd arg stops useEffect from running after the initial render
                // 2nd arg with a var inside the array causes useEffect to watch for changes in that variable and call itself when a change occurs
     return ( 
