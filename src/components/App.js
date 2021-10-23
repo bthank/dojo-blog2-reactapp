@@ -1,5 +1,6 @@
 import Navbar from './Navbar';
 import Home from './Home';
+import Create from './Create';
 // Note that the router should be inserted in your root component
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -15,8 +16,8 @@ const App = () => {
         <div className="content">
           {/* the Switch component makes sure that only one component displays at a time */}
           <Switch>
-            <Route path="/"><Home /></Route>
-            <Route path="/"><Home /></Route>
+            <Route exact path="/"><Home /></Route>
+            <Route path="/create"><Create /></Route>
           </Switch>
           
           
