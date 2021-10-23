@@ -1,18 +1,29 @@
 import Navbar from './Navbar';
 import Home from './Home';
+// Note that the router should be inserted in your root component
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //function App() {   this can be converted to an arrow function as shown below
 const App = () => {
 
 
   return (
-    <div className="App">
-      <Navbar />
-      <div className="content">
-        <Home />
-        
+    <Router>
+      <div className="App">
+        {/* Note that the Navvar will always show since it is outside the Switch */}
+        <Navbar />
+        <div className="content">
+          {/* the Switch component makes sure that only one component displays at a time */}
+          <Switch>
+            <Route path="/"><Home /></Route>
+            <Route path="/"><Home /></Route>
+          </Switch>
+          
+          
+        </div>
       </div>
-    </div>
+    </Router>
+
   );
 }
 
