@@ -7,11 +7,21 @@ const Create = () => {
     const [body, setBody] = useState('This is required'); 
     const [author, setAuthor] = useState('John'); // this is how to save value for a select list variable
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const blog = {
+            title,
+            body,
+            author
+        };
+        console.log(blog);
+    };
+
     return ( 
         <div className="create">
             <h2>Add a New Blog</h2>
             {/* setting up a controlled input form  */}
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Blog title:</label>
                 {/* - whatever value is will show inside the field initially 
                     - onChange function will set the state for the variable maintaining state
