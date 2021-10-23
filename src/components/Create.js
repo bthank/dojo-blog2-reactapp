@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Create = () => {
 
@@ -8,6 +9,8 @@ const Create = () => {
     const [author, setAuthor] = useState('John'); // this is how to save value for a select list variable
 
     const [isPending, setIsPending] = useState(false); // initially the page is not pending since the fetch post hasn't started yet
+
+    const history = useHistory(); // this object represents navigation history
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,7 +33,15 @@ const Create = () => {
         .then(() => {
             console.log("New blog added!");
             setIsPending(false); // reset this flag back to false once the record is added to db
+
+
+            // history.go(-1);   the go(-1) means go back 1 step in history
+            history.push('/');  // history.push method allows you to navigate to any page such as the home page from anywhere
+                                // - in this case route '/' takes us back to the home page on the router setup in App.js
+
         });
+
+        
     };
 
     return ( 

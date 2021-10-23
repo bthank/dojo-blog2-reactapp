@@ -23,6 +23,18 @@
       "body": "Baseball info",
       "author": "Michael",
       "id": 4
+    },
+    {
+      "title": "About soccer",
+      "body": "Soccer info",
+      "author": "John",
+      "id": 5
+    },
+    {
+      "title": "Lorem Impsem",
+      "body": "Blah blah",
+      "author": "Michael",
+      "id": 6
     }
   ]
 }
