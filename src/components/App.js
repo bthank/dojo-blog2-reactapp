@@ -3,6 +3,8 @@ import Home from './Home';
 import Create from './Create';
 // Note that the router should be inserted in your root component
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import BlogList from './BlogList';
+import BlogDetails from './BlogDetails';
 
 //function App() {   this can be converted to an arrow function as shown below
 const App = () => {
@@ -18,6 +20,8 @@ const App = () => {
           <Switch>
             <Route exact path="/"><Home /></Route>
             <Route path="/create"><Create /></Route>
+            {/* use of a route parameter in a route  */}
+            <Route path="/blogs/:id"><BlogDetails /></Route>
           </Switch>
           
           
